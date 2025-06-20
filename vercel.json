@@ -1,0 +1,15 @@
+{
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "GOOGLE_SHEETS_PRIVATE_KEY": "@google-sheets-private-key",
+    "GOOGLE_SHEETS_CLIENT_EMAIL": "@google-sheets-client-email",
+    "GOOGLE_SHEETS_SHEET_ID": "@google-sheets-sheet-id",
+    "GOOGLE_CLOUD_PROJECT_ID": "@google-cloud-project-id",
+    "GOOGLE_SHEETS_PRIVATE_KEY_ID": "@google-sheets-private-key-id",
+    "GOOGLE_SHEETS_CLIENT_ID": "@google-sheets-client-id"
+  }
+}
