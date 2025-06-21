@@ -29,45 +29,33 @@ const saveGameResult = (won: boolean) => {
 const calculateWinProbability = (): boolean => {
   const history = getGameHistory();
   
-  // Si no hay historial, empezar con probabilidad normal
+  // Si no hay historial, empezar con probabilidad alta (90%)
   if (history.length === 0) {
-    return Math.random() < 0.3;
-  }
-  
-  // Verificar los últimos 2 juegos para evitar ganadores consecutivos
-  const lastTwoGames = history.slice(-2);
-  const justWon = lastTwoGames[lastTwoGames.length - 1] === true;
-  
-  // Si acaba de ganar, reducir drásticamente la probabilidad por 2-3 juegos
-  if (justWon) {
-    const gamesAfterWin = history.slice().reverse().findIndex(result => result === false);
-    if (gamesAfterWin < 3) {
-      return Math.random() < 0.05; // Solo 5% de probabilidad
-    }
+    return Math.random() < 0.9;
   }
   
   // Calcular estadísticas de los últimos 10 juegos
   const last10Games = history.slice(-10);
   const winsInLast10 = last10Games.filter(result => result === true).length;
   
-  // Ajustar probabilidad basada en el objetivo de 3 ganadores cada 10 juegos
-  let adjustedProbability = 0.3;
+  // Ajustar probabilidad basada en el objetivo de 9 ganadores cada 10 juegos (90%)
+  let adjustedProbability = 0.9;
   
   if (last10Games.length >= 10) {
-    if (winsInLast10 >= 3) {
-      // Ya se alcanzó el objetivo, reducir probabilidad
-      adjustedProbability = 0.1;
-    } else if (winsInLast10 <= 1 && last10Games.length >= 8) {
-      // Muy pocos ganadores, aumentar probabilidad
-      adjustedProbability = 0.5;
+    if (winsInLast10 >= 9) {
+      // Ya se alcanzó el objetivo, mantener probabilidad alta pero no 100%
+      adjustedProbability = 0.8;
+    } else if (winsInLast10 <= 7) {
+      // Muy pocos ganadores para el objetivo del 90%, aumentar probabilidad
+      adjustedProbability = 0.95;
     }
   } else {
     // Menos de 10 juegos, usar probabilidad base con ligero ajuste
-    const targetWins = Math.floor((last10Games.length * 3) / 10);
+    const targetWins = Math.floor((last10Games.length * 9) / 10);
     if (winsInLast10 < targetWins) {
-      adjustedProbability = 0.4;
+      adjustedProbability = 0.95;
     } else if (winsInLast10 > targetWins) {
-      adjustedProbability = 0.2;
+      adjustedProbability = 0.85;
     }
   }
   
@@ -89,7 +77,7 @@ export default function FortuneWheel({ onWin }: FortuneWheelProps) {
     const sectionsCount = 8;
     const allSections = [0, 1, 2, 3, 4, 5, 6, 7];
     
-    // Sistema de probabilidades inteligente (30% de ganar en 10 intentos)
+    // Sistema de probabilidades inteligente (90% de ganar en 10 intentos)
     const willWin = calculateWinProbability();
     
     // Seleccionar una sección aleatoria de todas las secciones disponibles
