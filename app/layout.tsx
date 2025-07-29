@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Ruleta Stromberg - ¡Participa y Gana!',
+  title: 'Ruleta Buhero - Participá y ganá!',
   description: 'Participa en la ruleta de la fortuna de Stromberg y gana increíbles premios',
 }
 

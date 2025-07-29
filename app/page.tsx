@@ -1,32 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import ParticipationForm from '@/components/ParticipationForm';
 import FortuneWheel from '@/components/FortuneWheel';
 
 export default function Home() {
-  const [hasWon, setHasWon] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-
   const handleWin = () => {
-    setHasWon(true);
-    setShowForm(true);
-  };
-
-  const handleFormSubmit = () => {
-    // Reiniciar el juego después del envío exitoso del formulario
-    console.log('Formulario enviado exitosamente');
-    setHasWon(false);
-    setShowForm(false);
+    // El premio ya se muestra en el modal de la ruleta
+    console.log('Premio ganado y mostrado en la ruleta');
   };
 
   return (
     <main>
-      {!showForm ? (
-        <FortuneWheel onWin={handleWin} />
-      ) : (
-        <ParticipationForm onFormSubmit={handleFormSubmit} />
-      )}
+      <FortuneWheel onWin={handleWin} />
     </main>
   );
 }
