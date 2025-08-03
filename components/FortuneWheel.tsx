@@ -26,7 +26,7 @@ const saveGameResult = (won: boolean) => {
   localStorage.setItem('roulette_history', JSON.stringify(history));
 };
 
-// Premios con sus probabilidades
+// Premios con sus probabilidades - Solo Lapicera y Voucher Lomito
 const prizes = [
   { name: "Lapicera", probability: 50, color: "#ffffff" }, // Blanco
   { name: "Voucher Lomito Nostra", probability: 25, color: "#60a5fa" }, // Azul muy claro
