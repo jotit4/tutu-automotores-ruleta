@@ -28,10 +28,10 @@ const saveGameResult = (won: boolean) => {
 
 // Premios con sus probabilidades
 const prizes = [
-  { name: "Pulido gratis", probability: 5, color: "#ffffff" }, // Blanco
-  { name: "Tanque de Nafta", probability: 10, color: "#2563eb" }, // Azul medio
-  { name: "Lapicera", probability: 70, color: "#ffffff" }, // Blanco
-  { name: "Voucher Lomito Nostra", probability: 15, color: "#60a5fa" } // Azul muy claro
+  { name: "Lapicera", probability: 50, color: "#ffffff" }, // Blanco
+  { name: "Voucher Lomito Nostra", probability: 25, color: "#60a5fa" }, // Azul muy claro
+  { name: "Lapicera", probability: 20, color: "#ffffff" }, // Blanco
+  { name: "Voucher Lomito Nostra", probability: 5, color: "#60a5fa" } // Azul muy claro
 ];
 
 // Función para seleccionar premio basado en probabilidades
