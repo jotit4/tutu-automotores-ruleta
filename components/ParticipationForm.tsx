@@ -73,12 +73,24 @@ export default function ParticipationForm({ onFormSubmit }: ParticipationFormPro
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md">
+    <div 
+      className="min-h-screen flex items-center justify-center p-4 relative"
+      style={{
+        backgroundImage: 'url(/nuevo.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Capa oscura sobre el fondo */}
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
+      
+      {/* Contenido principal */}
+      <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md">
         <div className="text-center mb-6 sm:mb-8">
           <div className="mb-4 sm:mb-6">
             <Image
-              src="/logo stromberg.png"
+              src="/logo-negro.webp"
               alt="Stromberg Logo"
               width={150}
               height={60}
@@ -86,10 +98,10 @@ export default function ParticipationForm({ onFormSubmit }: ParticipationFormPro
             />
           </div>
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-            ¡Ganaste!
+            ¡Bienvenido!
           </h1>
           <p className="text-sm sm:text-base text-gray-600">
-            Completa el formulario para participar en el sorteo y ganar increíbles premios
+            Completa tus datos para jugar la ruleta y ganar increíbles premios
           </p>
         </div>
 
@@ -157,7 +169,7 @@ export default function ParticipationForm({ onFormSubmit }: ParticipationFormPro
             disabled={isSubmitting}
             className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-3 sm:py-4"
           >
-            {isSubmitting ? 'Procesando...' : 'Enviar'}
+            {isSubmitting ? 'Procesando...' : 'Jugar Ruleta'}
           </button>
         </form>
 
