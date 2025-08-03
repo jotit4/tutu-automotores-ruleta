@@ -96,7 +96,6 @@ export default function FortuneWheel({ onWin }: FortuneWheelProps) {
           setIsSpinning(false);
           setTimeout(() => {
             setShowResult(true);
-            onWin();
           }, 1000);
         }
       });
@@ -216,17 +215,14 @@ export default function FortuneWheel({ onWin }: FortuneWheelProps) {
               <p className="text-lg sm:text-xl text-gray-700 mb-4 sm:mb-6 font-semibold">
                 ¡Ganaste: {wonPrize}!
               </p>
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-                Nos pondremos en contacto para entregarte tu premio.
-              </p>
               <button
                 onClick={() => {
                   setShowResult(false);
                   onWin();
                 }}
-                className="btn-secondary w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-colors w-full sm:w-auto text-sm sm:text-base"
               >
-                ¡Genial!
+                ¡Siguiente Jugador!
               </button>
             </div>
           </div>
