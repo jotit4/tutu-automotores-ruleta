@@ -26,12 +26,12 @@ const saveGameResult = (won: boolean) => {
   localStorage.setItem('roulette_history', JSON.stringify(history));
 };
 
-// Premios con sus probabilidades - Solo Lapicera y Voucher Lomito
+// Premios con sus probabilidades - Solo Lapicera (40%) y Seguí participando (60%)
 const prizes = [
-  { name: "Lapicera", probability: 50, color: "#ffffff" }, // Blanco
-  { name: "Voucher Lomito Nostra", probability: 25, color: "#60a5fa" }, // Azul muy claro
-  { name: "Lapicera", probability: 20, color: "#ffffff" }, // Blanco
-  { name: "Voucher Lomito Nostra", probability: 5, color: "#60a5fa" } // Azul muy claro
+  { name: "Lapicera", probability: 40, color: "#ffffff" }, // Blanco
+  { name: "Seguí participando!", probability: 20, color: "#60a5fa" }, // Azul muy claro
+  { name: "Seguí participando!", probability: 20, color: "#ffffff" }, // Blanco
+  { name: "Seguí participando!", probability: 20, color: "#60a5fa" } // Azul muy claro
 ];
 
 // Función para seleccionar premio basado en probabilidades
@@ -211,9 +211,11 @@ export default function FortuneWheel({ onWin }: FortuneWheelProps) {
         {showResult && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md w-full text-center">
-              <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🎉</div>
+              {wonPrize === "Lapicera" && (
+                <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🎉</div>
+              )}
               <p className="text-lg sm:text-xl text-gray-700 mb-4 sm:mb-6 font-semibold">
-                ¡Ganaste: {wonPrize}!
+                {wonPrize === "Lapicera" ? `¡Ganaste: ${wonPrize}!` : wonPrize}
               </p>
               <button
                 onClick={() => {
